@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    
+</head>
+<body>
+    <form>
+        <input type="text" id="number" name="number"><br><br>
+        <button onclick="add(document.getElementById('number').value)" >Add</button>
+
+        <p id="res"></p>
+    </form> 
+
+
+    <script>
+        add =(number)=>{
+            
+            let sum = 0, str = "", b = false,minus=false;
+            for (let i = 0; i < number.length; i++) 
+            {
+                    if(number[i] === "-" ){
+                        minus = true;
+                        continue;
+                    }
+                    if(Number.isInteger(parseInt(number[i])))
+                    {
+                        if(minus){
+                            alert("Nagative number not allowed"); 
+                            break;
+                        }
+                        str += number[i];   
+                        
+                    }
+                    else
+                    {
+                        minus=false;
+                        if(str === "")
+                            continue;
+                        sum += parseInt(str);
+                        str="";
+                    }
+                
+            }
+                sum += parseInt(str);
+                alert(sum); 
+       }
+    </script>
+</body>
+</html>
